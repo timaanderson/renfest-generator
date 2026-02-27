@@ -1,8 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import PersonaCard from '@/components/PersonaCard'
+import PersonaProfile from '@/components/PersonaProfile'
 import { generatePersona, buildCrest } from '@/lib/generate'
+import { MANTLING } from '@/lib/heraldry'
 import type { Persona, QuestionnaireAnswers } from '@/lib/types'
 
 export default function PersonaPage() {
@@ -16,12 +17,17 @@ export default function PersonaPage() {
     setError('')
     try {
       const result = await generatePersona(answers)
+      const crest = buildCrest(answers)
       setPersona({
         id: crypto.randomUUID(),
         createdAt: new Date().toISOString(),
         answers,
-        crest: buildCrest(answers),
-        ...result,
+        crest,
+        name: result.name,
+        title: result.title,
+        backstory: result.backstory,
+        trivia: result.trivia,
+        stats: result.stats,
       })
     } catch (e) {
       setError('The oracle is unavailable. Check your OPENAI_API_KEY.')
@@ -36,21 +42,25 @@ export default function PersonaPage() {
     generate(JSON.parse(raw))
   }, [])
 
+  const archetype = persona?.answers.archetype.toLowerCase() ?? 'knight'
+
   if (loading) {
     return (
-      <div className="text-center py-20 space-y-4">
-        <div className="text-5xl animate-pulse">🔮</div>
-        <p className="text-xl text-inkbrown">The oracle divines thy persona...</p>
-        <p className="text-inkbrown/50 text-sm">Consulting ancient scrolls</p>
+      <div
+        className={`min-h-screen flex flex-col items-center justify-center gap-6 bg-archetype-${archetype}`}
+      >
+        <div className="text-6xl animate-pulse">🔮</div>
+        <p className="text-xl text-parchment">The oracle divines thy persona...</p>
+        <p className="text-parchment/40 text-sm">Consulting ancient scrolls</p>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="text-center py-20 space-y-4">
-        <p className="text-red-600">{error}</p>
-        <a href="/generate" className="text-burgundy hover:underline">← Try again</a>
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+        <p className="text-red-400">{error}</p>
+        <a href="/generate" className="text-gold hover:underline">← Try again</a>
       </div>
     )
   }
@@ -58,15 +68,16 @@ export default function PersonaPage() {
   if (!persona) return null
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-inkbrown text-center">Thy Persona Hath Been Revealed</h1>
-      <PersonaCard
-        persona={persona}
-        onReroll={() => {
-          const raw = sessionStorage.getItem('renfest_answers')
-          if (raw) generate(JSON.parse(raw))
-        }}
-      />
+    <div className={`min-h-screen bg-archetype-${archetype} py-8 px-4`}>
+      <div className="max-w-lg mx-auto">
+        <PersonaProfile
+          persona={persona}
+          onReroll={() => {
+            const raw = sessionStorage.getItem('renfest_answers')
+            if (raw) generate(JSON.parse(raw))
+          }}
+        />
+      </div>
     </div>
   )
 }
