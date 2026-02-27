@@ -10,6 +10,14 @@ export interface QuestionnaireAnswers {
   skill: Skill
   motivation: Motivation
   flaw: Flaw
+  nameHint?: string   // step 6 — optional preferred name/handle
+  bioHint?: string    // step 7 — optional biography note
+}
+
+export interface PersonaStats {
+  realm: string       // e.g. "The Sunken Marshes of Elderfen"
+  weapon: string      // e.g. "A rusted falchion named 'Debts Unpaid'"
+  allegiance: string  // e.g. "The Amber Council"
 }
 
 export interface Persona {
@@ -19,6 +27,7 @@ export interface Persona {
   title: string
   backstory: string
   trivia: string
+  stats: PersonaStats
   answers: QuestionnaireAnswers
   crest: CrestConfig
 }
@@ -26,6 +35,14 @@ export interface Persona {
 export interface CrestConfig {
   primaryColor: string
   secondaryColor: string
+  glowColor: string
   symbol: Symbol
   archetype: Archetype
+}
+
+export interface FestivalEntry {
+  id: string
+  name: string        // free-form festival name, e.g. "Texas Renaissance Festival"
+  month: string       // e.g. "October"
+  year: string        // e.g. "2024"
 }
