@@ -26,12 +26,12 @@ export const questions: AnyQuestion[] = [
     prompt: 'What manner of soul art thou?',
     subtext: 'Choose the path that calls to thine heart',
     options: [
-      { value: 'Knight',    label: '⚔️ Knight',    description: 'A warrior of honour and steel' },
-      { value: 'Bard',      label: '🎵 Bard',      description: 'A weaver of tales and melodies' },
-      { value: 'Wizard',    label: '🔮 Wizard',    description: 'A seeker of arcane mysteries' },
-      { value: 'Rogue',     label: '🗡️ Rogue',     description: 'A shadow of cunning and coin' },
-      { value: 'Viking',    label: '🪓 Viking',    description: 'A bold explorer of distant shores' },
-      { value: 'Herbalist', label: '🌿 Herbalist', description: 'A keeper of forest remedies' },
+      { value: 'Knight',  label: '⚔️ Knight',  description: 'A warrior of honour and steel' },
+      { value: 'Bard',    label: '🎵 Bard',    description: 'A weaver of tales and melodies' },
+      { value: 'Wizard',  label: '🔮 Wizard',  description: 'A seeker of arcane mysteries' },
+      { value: 'Rogue',   label: '🗡️ Rogue',   description: 'A shadow of cunning and coin' },
+      { value: 'Viking',  label: '🪓 Viking',  description: 'A bold explorer of distant shores' },
+      { value: 'Fairy',   label: '🧚 Fairy',   description: 'A creature of the enchanted forest' },
     ],
   } as ChoiceQuestion<Archetype>,
   {

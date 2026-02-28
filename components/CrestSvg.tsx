@@ -7,7 +7,7 @@ const SHIELD_SHAPES: Record<string, string> = {
   Wizard:    'M 50 5 L 95 25 L 75 95 L 25 95 L 5 25 Z',
   Rogue:     'M 50 5 L 90 30 L 90 65 L 50 98 L 10 65 L 10 30 Z',
   Bard:      'M 50 5 Q 95 5 95 50 Q 95 90 50 98 Q 5 90 5 50 Q 5 5 50 5 Z',
-  Herbalist: 'M 50 5 L 90 25 L 90 70 Q 90 90 50 98 Q 10 90 10 70 L 10 25 Z',
+  Fairy:     'M 50 5 L 90 25 L 90 70 Q 90 90 50 98 Q 10 90 10 70 L 10 25 Z',
 }
 
 function FieldDef({ archetype }: { archetype: string }) {
@@ -45,8 +45,8 @@ function FieldDef({ archetype }: { archetype: string }) {
         <line x1={9} y1={0} x2={9} y2={18} stroke="#245022" strokeWidth={2} opacity={0.5}/>
       </pattern>
     )
-    default: return ( // Herbalist
-      <pattern id="field-herbalist" patternUnits="userSpaceOnUse" width={20} height={20}>
+    default: return ( // Fairy
+      <pattern id="field-fairy" patternUnits="userSpaceOnUse" width={20} height={20}>
         <rect width={20} height={20} fill="#3a6b1a"/>
         <circle cx={10} cy={10} r={4} fill="#2d5514" opacity={0.4}/>
         <circle cx={0} cy={0} r={2} fill="#2d5514" opacity={0.3}/>

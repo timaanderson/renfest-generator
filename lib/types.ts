@@ -1,4 +1,4 @@
-export type Archetype = 'Knight' | 'Bard' | 'Wizard' | 'Rogue' | 'Viking' | 'Herbalist'
+export type Archetype = 'Knight' | 'Bard' | 'Wizard' | 'Rogue' | 'Viking' | 'Fairy'
 export type Symbol = 'Dragon' | 'Wolf' | 'Mushroom' | 'Moon' | 'Anvil' | 'Lute'
 export type Skill = 'Combat' | 'Storytelling' | 'Brewing' | 'Healing' | 'Bargaining' | 'Baking'
 export type Motivation = 'Glory' | 'Fortune' | 'Love' | 'Curiosity' | 'Prophecy' | 'Hunger'

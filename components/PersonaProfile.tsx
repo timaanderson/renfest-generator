@@ -4,6 +4,7 @@ import { toPng } from 'html-to-image'
 import CrestSvg from './CrestSvg'
 import FestivalBadges from './FestivalBadges'
 import PersonaExportCard from './PersonaExportCard'
+import ArchetypeBorder from './ArchetypeBorder'
 import { savePersona } from '@/lib/persona-storage'
 import { MANTLING, SILHOUETTES } from '@/lib/heraldry'
 import type { Persona } from '@/lib/types'
@@ -70,9 +71,11 @@ export default function PersonaProfile({ persona, onReroll, showSave = true }: P
 
       {/* Main profile card */}
       <div
-        className={`rounded-2xl overflow-hidden shadow-2xl bg-archetype-${archLC} corner-flourish`}
+        className={`relative rounded-2xl overflow-hidden shadow-2xl bg-archetype-${archLC}`}
         style={{ borderColor: `${m.secondary}40`, borderWidth: 1, borderStyle: 'solid' }}
       >
+        {/* Archetype decorative border overlay */}
+        <ArchetypeBorder archetype={persona.answers.archetype} m={m} />
 
         {/* ── Hero section: Crest + Silhouette ─────────────────────────── */}
         <div

@@ -26,7 +26,7 @@ body::after {
 .bg-archetype-wizard    { background: radial-gradient(ellipse at 50% 0%, #0d1f3d 0%, #060e1f 50%, #020408 100%); }
 .bg-archetype-rogue     { background: radial-gradient(ellipse at 50% 0%, #111111 0%, #0a0a0a 50%, #050505 100%); }
 .bg-archetype-viking    { background: radial-gradient(ellipse at 50% 0%, #122214 0%, #080f09 50%, #030503 100%); }
-.bg-archetype-herbalist { background: radial-gradient(ellipse at 50% 0%, #1a2f0d 0%, #0d1808 50%, #050a03 100%); }
+.bg-archetype-fairy     { background: radial-gradient(ellipse at 50% 0%, #1a2f0d 0%, #0d1808 50%, #050a03 100%); }
 
 /* ── Carved border treatment ─────────────────────────────────────────────── */
 .carved-border {

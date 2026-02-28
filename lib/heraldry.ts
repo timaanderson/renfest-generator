@@ -46,15 +46,15 @@ export const FIELD_PATTERNS: Record<Archetype, { id: string; patternEl: string; 
     </pattern>`,
     fill: 'url(#field-viking)',
   },
-  Herbalist: {
-    id: 'field-herbalist',
-    patternEl: `<pattern id="field-herbalist" patternUnits="userSpaceOnUse" width="20" height="20">
+  Fairy: {
+    id: 'field-fairy',
+    patternEl: `<pattern id="field-fairy" patternUnits="userSpaceOnUse" width="20" height="20">
       <rect width="20" height="20" fill="#3a6b1a"/>
       <circle cx="10" cy="10" r="4" fill="#2d5514" opacity="0.4"/>
       <circle cx="0" cy="0" r="2" fill="#2d5514" opacity="0.3"/>
       <circle cx="20" cy="20" r="2" fill="#2d5514" opacity="0.3"/>
     </pattern>`,
-    fill: 'url(#field-herbalist)',
+    fill: 'url(#field-fairy)',
   },
 }
 
@@ -76,12 +76,14 @@ export const CHARGE_PATHS: Record<Symbol, string> = {
 }
 
 // ── Mantling colors (Layer 2 config) ─────────────────────────────────────────
-export const MANTLING: Record<Archetype, {
+export interface MantlingColors {
   primary: string
   secondary: string
   glow: string
   bgGradient: string
-}> = {
+}
+
+export const MANTLING: Record<Archetype, MantlingColors> = {
   Knight:    {
     primary: '#6b1a2a', secondary: '#c9a84c',
     glow: 'rgba(107,26,42,0.7)',
@@ -107,7 +109,7 @@ export const MANTLING: Record<Archetype, {
     glow: 'rgba(45,90,39,0.7)',
     bgGradient: 'radial-gradient(ellipse at top, #122214 0%, #080f09 55%, #030503 100%)',
   },
-  Herbalist: {
+  Fairy: {
     primary: '#3a6b1a', secondary: '#f4e4bc',
     glow: 'rgba(58,107,26,0.7)',
     bgGradient: 'radial-gradient(ellipse at top, #1a2f0d 0%, #0d1808 55%, #050a03 100%)',
@@ -206,7 +208,7 @@ export const SILHOUETTES: Record<Archetype, string[]> = {
     // right leg
     'M54,96 L84,96 L86,152 L56,152 Z',
   ],
-  Herbalist: [
+  Fairy: [
     // wide straw hat brim
     'M8,32 L92,32 L88,38 L12,38 Z',
     // hat crown (rounded)
