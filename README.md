@@ -1,13 +1,19 @@
 # Renaissance Persona Generator ⚔️
 
-Answer five whimsical questions and receive an AI-generated Renaissance Faire persona — complete with a name, backstory, heraldic crest, and hilariously inaccurate historical trivia.
+Answer a series of whimsical questions and receive an AI-generated Renaissance Faire persona — complete with a name, title, backstory, heraldic crest, archetype silhouette, and hilariously inaccurate historical trivia.
 
 ## Features
-- 🎭 5-question themed questionnaire
-- 🔮 GPT-4o generated persona (name, title, backstory, trivia)
-- 🛡️ SVG heraldic crest based on your answers
-- 🎲 Re-roll button to regenerate without re-doing the questionnaire
-- 📜 Local archive (localStorage) — save, browse, export, delete
+
+- 🎭 **7-step questionnaire** — archetype, symbol, skill, motivation, flaw, optional name hint and bio hint
+- 🌑 **Archetype-themed UI** — dark, immersive backgrounds per archetype (Knight, Bard, Wizard, Rogue, Viking, Herbalist)
+- 🔮 **GPT-4o persona generation** — name, title, backstory, trivia, stat block
+- 🛡️ **3-layer SVG heraldic crests** — shield shape, device, and mantling per archetype
+- 🧙 **Character silhouettes** — archetype-specific illustrated silhouette on the profile card
+- 📊 **Stat pills** — Cunning, Valor, Charm, Wisdom displayed on the profile
+- 🎪 **Festival badges** — archetype-specific badge set
+- 🎲 **Re-roll** — regenerate persona without re-doing the questionnaire
+- 📜 **Local archive** — save, browse, and delete past personas (localStorage)
+- 🖼️ **PNG export** — download your profile card as a 600×600 image
 
 ## Setup
 
@@ -27,3 +33,14 @@ Answer five whimsical questions and receive an AI-generated Renaissance Faire pe
    ```
 
 Visit http://localhost:3000
+
+## Archetypes
+
+| Archetype | Vibe |
+|---|---|
+| ⚔️ Knight | Noble, Honorable |
+| 🎵 Bard | Musical, Whimsical |
+| 🔮 Wizard | Arcane, Scholarly |
+| 🗡️ Rogue | Cunning, Shadowy |
+| 🪓 Viking | Fierce, Grounded |
+| 🌿 Herbalist | Earthy, Calm |
