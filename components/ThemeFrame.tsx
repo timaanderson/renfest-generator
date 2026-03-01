@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 
-export type ThemeFrameTheme = 'knight' | 'viking' | 'pirate' | 'fairy' | 'royal' | 'bard'
+export type ThemeFrameTheme = 'knight' | 'viking' | 'pirate' | 'fairy' | 'royal' | 'bard' | 'wizard' | 'rogue'
 
 interface ThemeFrameProps {
   theme: ThemeFrameTheme
@@ -206,6 +206,64 @@ function animateBard(tl: gsap.core.Timeline, el: HTMLElement, dur: number) {
   }
 }
 
+/* ─── Wizard (arcane edge glow — CSS stub) ────────────── */
+function WizardElements() {
+  return <>
+    <div data-frame="glow-left"
+      style={{
+        position: 'absolute', left: 0, top: 0,
+        width: 'clamp(60px, 8vw, 120px)', height: '100vh',
+        background: 'linear-gradient(to right, rgba(88,28,220,0.45) 0%, transparent 100%)',
+        filter: 'blur(8px)',
+        opacity: 0,
+      }} />
+    <div data-frame="glow-right"
+      style={{
+        position: 'absolute', right: 0, top: 0,
+        width: 'clamp(60px, 8vw, 120px)', height: '100vh',
+        background: 'linear-gradient(to left, rgba(88,28,220,0.45) 0%, transparent 100%)',
+        filter: 'blur(8px)',
+        opacity: 0,
+      }} />
+  </>
+}
+function animateWizard(tl: gsap.core.Timeline, el: HTMLElement, dur: number) {
+  const l = el.querySelector<HTMLElement>('[data-frame="glow-left"]')
+  const r = el.querySelector<HTMLElement>('[data-frame="glow-right"]')
+  tl.to([l, r], { opacity: 1, duration: dur * 0.8, ease: 'power2.out', stagger: 0.1 })
+  if (dur > 0) {
+    tl.to([l, r], { opacity: 0.55, duration: 2.8, ease: 'sine.inOut', repeat: -1, yoyo: true }, '+=0.2')
+  }
+}
+
+/* ─── Rogue (amber smoke edge glow — CSS stub) ────────── */
+function RogueElements() {
+  return <>
+    <div data-frame="glow-left"
+      style={{
+        position: 'absolute', left: 0, top: 0,
+        width: 'clamp(60px, 8vw, 120px)', height: '100vh',
+        background: 'linear-gradient(to right, rgba(180,100,20,0.3) 0%, transparent 100%)',
+        filter: 'blur(6px)',
+        opacity: 0,
+      }} />
+    <div data-frame="glow-right"
+      style={{
+        position: 'absolute', right: 0, top: 0,
+        width: 'clamp(60px, 8vw, 120px)', height: '100vh',
+        background: 'linear-gradient(to left, rgba(180,100,20,0.3) 0%, transparent 100%)',
+        filter: 'blur(6px)',
+        opacity: 0,
+      }} />
+  </>
+}
+function animateRogue(tl: gsap.core.Timeline, el: HTMLElement, dur: number) {
+  const l = el.querySelector<HTMLElement>('[data-frame="glow-left"]')
+  const r = el.querySelector<HTMLElement>('[data-frame="glow-right"]')
+  tl.to(l, { opacity: 1, duration: dur * 0.6, ease: 'power1.out' })
+    .to(r, { opacity: 1, duration: dur * 0.6, ease: 'power1.out' }, `-=${dur * 0.3}`)
+}
+
 /* ─── Main component ──────────────────────────────────── */
 export default function ThemeFrame({ theme, onAnimationComplete }: ThemeFrameProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -226,6 +284,8 @@ export default function ThemeFrame({ theme, onAnimationComplete }: ThemeFramePro
       if (theme === 'fairy')  animateFairy(tl, el, dur)
       if (theme === 'knight') animateKnight(tl, el, dur)
       if (theme === 'bard')   animateBard(tl, el, dur)
+      if (theme === 'wizard') animateWizard(tl, el, dur)
+      if (theme === 'rogue')  animateRogue(tl, el, dur)
     })
     return () => { cancelAnimationFrame(rafId); tlRef.current?.kill() }
   }, [theme, onAnimationComplete])
@@ -240,6 +300,8 @@ export default function ThemeFrame({ theme, onAnimationComplete }: ThemeFramePro
       {theme === 'fairy'  && <FairyElements />}
       {theme === 'knight' && <KnightElements />}
       {theme === 'bard'   && <BardElements />}
+      {theme === 'wizard' && <WizardElements />}
+      {theme === 'rogue'  && <RogueElements />}
     </div>
   )
 }

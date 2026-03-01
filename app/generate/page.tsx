@@ -25,20 +25,20 @@ export default function GeneratePage() {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-20">
         <div className="text-5xl animate-spin">⚔️</div>
-        <p className="text-xl text-inkbrown">Consulting the oracle...</p>
+        <p className="text-xl text-purple-200">Consulting the oracle...</p>
       </div>
     )
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-2xl mx-auto">
       <div className="text-center">
-        <h1 className="text-3xl font-serif font-bold text-inkbrown">Thy Questionnaire</h1>
-        <p className="text-inkbrown/50 text-sm mt-1 italic">Answer truly, and the oracle shall divine thy fate</p>
+        <h1 className="text-3xl font-serif font-bold text-purple-100">Thy Questionnaire</h1>
+        <p className="text-purple-200/50 text-sm mt-1 italic">Answer truly, and the oracle shall divine thy fate</p>
       </div>
 
-      <div className="parchment-card rounded-2xl p-8 carved-border border-inkbrown/30">
-        {error && <p className="text-red-600 text-center mb-4 text-sm">{error}</p>}
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+        {error && <p className="text-red-400 text-center mb-4 text-sm">{error}</p>}
         <Questionnaire onComplete={handleComplete} />
       </div>
     </div>

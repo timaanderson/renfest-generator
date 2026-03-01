@@ -4,73 +4,21 @@
 
 /* ── Base ────────────────────────────────────────────────────────────────── */
 body {
-  background-color: #f4e4bc;
-  color: #3b1f0a;
+  background-color: #08060f;
+  color: #d4c8f0;
   font-family: Georgia, serif;
   min-height: 100vh;
 }
 
-/* ── Parchment grain texture overlay ────────────────────────────────────── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-}
-
 /* ── Archetype-themed page backgrounds ──────────────────────────────────── */
-.bg-archetype-knight    { background: radial-gradient(ellipse at 50% 0%, #3d0d14 0%, #1a0508 50%, #0d0202 100%); }
-.bg-archetype-bard      { background: radial-gradient(ellipse at 50% 0%, #2a1040 0%, #160824 50%, #0a0512 100%); }
-.bg-archetype-wizard    { background: radial-gradient(ellipse at 50% 0%, #0d1f3d 0%, #060e1f 50%, #020408 100%); }
-.bg-archetype-rogue     { background: radial-gradient(ellipse at 50% 0%, #111111 0%, #0a0a0a 50%, #050505 100%); }
-.bg-archetype-viking    { background: radial-gradient(ellipse at 50% 0%, #122214 0%, #080f09 50%, #030503 100%); }
-.bg-archetype-herbalist { background: radial-gradient(ellipse at 50% 0%, #1a2f0d 0%, #0d1808 50%, #050a03 100%); }
-.bg-archetype-royal     { background: radial-gradient(ellipse at 50% 0%, #2a1040 0%, #160828 50%, #0a0515 100%); }
-
-/* ── Carved border treatment ─────────────────────────────────────────────── */
-.carved-border {
-  position: relative;
-  border: 2px solid;
-  border-radius: 4px;
-}
-
-.carved-border::before {
-  content: '❧';
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: inherit;
-  padding: 0 8px;
-  font-size: 20px;
-  line-height: 1;
-}
-
-/* ── Corner flourishes ───────────────────────────────────────────────────── */
-.corner-flourish {
-  position: relative;
-}
-.corner-flourish::before,
-.corner-flourish::after {
-  content: '✦';
-  position: absolute;
-  font-size: 12px;
-  opacity: 0.6;
-}
-.corner-flourish::before { top: 6px; left: 10px; }
-.corner-flourish::after  { top: 6px; right: 10px; }
-
-/* ── Questionnaire parchment card ────────────────────────────────────────── */
-.parchment-card {
-  background: linear-gradient(135deg, #f4e4bc 0%, #e8d0a0 40%, #f0dab0 100%);
-  color: #3b1f0a;
-  box-shadow:
-    inset 0 1px 3px rgba(0,0,0,0.2),
-    inset 0 -1px 3px rgba(255,255,255,0.3),
-    0 8px 32px rgba(0,0,0,0.5);
-}
+.bg-archetype-knight  { background: radial-gradient(ellipse at 50% 0%, #3d0d14 0%, #1a0508 50%, #0d0202 100%); }
+.bg-archetype-bard    { background: radial-gradient(ellipse at 50% 0%, #2a1040 0%, #160824 50%, #0a0512 100%); }
+.bg-archetype-wizard  { background: radial-gradient(ellipse at 50% 0%, #0d1f3d 0%, #060e1f 50%, #020408 100%); }
+.bg-archetype-rogue   { background: radial-gradient(ellipse at 50% 0%, #111111 0%, #0a0a0a 50%, #050505 100%); }
+.bg-archetype-viking  { background: radial-gradient(ellipse at 50% 0%, #122214 0%, #080f09 50%, #030503 100%); }
+.bg-archetype-pirate  { background: radial-gradient(ellipse at 50% 0%, #0d1a24 0%, #060c12 50%, #020406 100%); }
+.bg-archetype-fairy   { background: radial-gradient(ellipse at 50% 0%, #0d2416 0%, #081410 50%, #030805 100%); }
+.bg-archetype-royal   { background: radial-gradient(ellipse at 50% 0%, #2a1040 0%, #160828 50%, #0a0515 100%); }
 
 /* ── Stat pill ───────────────────────────────────────────────────────────── */
 .stat-pill {

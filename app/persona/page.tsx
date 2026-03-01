@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import PersonaProfile from '@/components/PersonaProfile'
 import OraclesChamber from '@/components/OraclesChamber'
+import ThemeFrame, { type ThemeFrameTheme } from '@/components/ThemeFrame'
 import { generatePersona, buildCrest } from '@/lib/generate'
 import type { Persona, QuestionnaireAnswers } from '@/lib/types'
 
@@ -53,7 +54,7 @@ export default function PersonaPage() {
     return (
       <div className="flex flex-col items-center justify-center py-20 gap-4">
         <div className="text-6xl animate-pulse">🔮</div>
-        <p className="text-xl text-inkbrown">The oracle divines thy persona...</p>
+        <p className="text-xl text-purple-200">The oracle divines thy persona...</p>
       </div>
     )
   }
@@ -61,8 +62,8 @@ export default function PersonaPage() {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center py-20 gap-4">
-        <p className="text-red-600 font-bold">{error}</p>
-        <a href="/generate" className="text-burgundy hover:underline">← Try again</a>
+        <p className="text-red-400 font-bold">{error}</p>
+        <a href="/generate" className="text-purple-400 hover:underline">← Try again</a>
       </div>
     )
   }
@@ -72,7 +73,8 @@ export default function PersonaPage() {
   const archetype = persona.answers.archetype.toLowerCase()
 
   return (
-    <div className={`-mx-4 -mt-8 px-4 pt-8 pb-8 bg-archetype-${archetype}`}>
+    <div className={`-mx-6 -mt-8 px-6 pt-8 pb-8 bg-archetype-${archetype}`}>
+      <ThemeFrame theme={archetype as ThemeFrameTheme} />
       <div className="max-w-lg mx-auto">
         <PersonaProfile
           persona={persona}

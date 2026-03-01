@@ -42,11 +42,17 @@ const ARCHETYPE_PHRASES: Record<string, string[]> = {
     "Sharpening the battle-axe...",
     "Seeking the favor of Odin..."
   ],
-  Herbalist: [
-    "Drying the lavender bundles...",
-    "Grinding the medicinal roots...",
-    "Tending the secret garden...",
-    "Brewing the healing draught..."
+  Pirate: [
+    "Charting the forbidden waters...",
+    "Polishing the cutlass...",
+    "Bribing the harbormaster...",
+    "Searching for the buried treasure..."
+  ],
+  Fairy: [
+    "Weaving moonlight into threads...",
+    "Gathering dew from spider silk...",
+    "Whispering to the forest spirits...",
+    "Brewing a pinch of wild magic..."
   ],
   Royal: [
     "Polishing the crown jewels...",
@@ -86,9 +92,9 @@ export default function OraclesChamber({ answers }: Props) {
             rotate: { duration: 10, repeat: Infinity, ease: "linear" },
             scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="w-32 h-32 border-4 border-dashed border-burgundy/40 rounded-full flex items-center justify-center"
+          className="w-32 h-32 border-4 border-dashed border-purple-500/40 rounded-full flex items-center justify-center"
         >
-          <div className="w-24 h-24 border-2 border-burgundy/20 rounded-full flex items-center justify-center">
+          <div className="w-24 h-24 border-2 border-purple-500/20 rounded-full flex items-center justify-center">
             <div className="text-5xl">🔮</div>
           </div>
         </motion.div>
@@ -121,22 +127,22 @@ export default function OraclesChamber({ answers }: Props) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-xl font-serif italic text-inkbrown/80"
+            className="text-xl font-serif italic text-purple-200/80"
           >
             {pool[phraseIndex]}
           </motion.p>
         </AnimatePresence>
       </div>
 
-      <div className="mt-8 w-48 h-1 bg-burgundy/10 rounded-full overflow-hidden">
+      <div className="mt-8 w-48 h-1 bg-purple-900/40 rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-burgundy/50 rounded-full"
+          className="h-full bg-purple-500/60 rounded-full"
           animate={{ x: ['-100%', '100%'] }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
       </div>
 
-      <p className="mt-4 text-xs text-inkbrown/40 uppercase tracking-[0.2em] font-bold">
+      <p className="mt-4 text-xs text-purple-200/40 uppercase tracking-[0.2em] font-bold">
         Divining thy true nature
       </p>
     </div>

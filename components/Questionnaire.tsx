@@ -46,7 +46,6 @@ export default function Questionnaire({ onComplete }: Props) {
   }
 
   const isLast = step === questions.length - 1
-  const progressPct = ((step) / questions.length) * 100
 
   return (
     <div className="relative overflow-hidden min-h-[380px] flex flex-col">
@@ -56,7 +55,7 @@ export default function Questionnaire({ onComplete }: Props) {
           <div
             key={i}
             className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
-              i <= step ? 'bg-burgundy' : 'bg-inkbrown/10'
+              i <= step ? 'bg-gold' : 'bg-white/10'
             }`}
           />
         ))}
@@ -72,18 +71,18 @@ export default function Questionnaire({ onComplete }: Props) {
           className="flex-1 flex flex-col"
         >
           <div className="text-center mb-6">
-            <p className="text-xs uppercase tracking-widest text-inkbrown/40 font-bold mb-1">
+            <p className="text-xs uppercase tracking-widest text-purple-200/40 font-bold mb-1">
               Step {step + 1} of {questions.length}
               {question.kind === 'text' && (
                 <span className="ml-2 normal-case opacity-70">— optional</span>
               )}
             </p>
-            <h2 className="text-2xl font-serif font-bold text-inkbrown mb-1">{question.prompt}</h2>
-            <p className="text-inkbrown/60 italic text-sm">{question.subtext}</p>
+            <h2 className="text-2xl font-serif font-bold text-purple-100 mb-1">{question.prompt}</h2>
+            <p className="text-purple-200/60 italic text-sm">{question.subtext}</p>
           </div>
 
           {question.kind === 'choice' ? (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-3">
               {(question as ChoiceQuestion<string>).options.map((opt, idx) => (
                 <motion.button
                   key={opt.value}
@@ -91,10 +90,14 @@ export default function Questionnaire({ onComplete }: Props) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   onClick={() => handleChoice(opt.value)}
-                  className="p-4 border-2 border-inkbrown/20 rounded-lg text-left hover:border-burgundy hover:bg-burgundy/5 transition-all group"
+                  className="p-4 border border-white/10 bg-white/5 rounded-lg text-left
+                             hover:border-gold/50 hover:shadow-[0_0_24px_rgba(201,168,76,0.25)]
+                             transition-all group min-h-[180px] flex flex-col"
                 >
-                  <div className="font-semibold text-inkbrown group-hover:text-burgundy">{opt.label}</div>
-                  <div className="text-sm text-inkbrown/60 mt-1">{opt.description}</div>
+                  <div className="font-semibold text-purple-100 group-hover:text-gold transition-colors">
+                    {opt.label}
+                  </div>
+                  <div className="text-sm text-purple-200/60 mt-2 flex-1">{opt.description}</div>
                 </motion.button>
               ))}
             </div>
@@ -102,7 +105,9 @@ export default function Questionnaire({ onComplete }: Props) {
             /* Text input step */
             <div className="space-y-4">
               <textarea
-                className="w-full p-4 border-2 border-inkbrown/20 rounded-lg bg-parchment/60 text-inkbrown placeholder-inkbrown/40 focus:border-burgundy focus:outline-none resize-none text-sm leading-relaxed"
+                className="w-full p-4 border border-white/20 rounded-lg bg-white/5 text-purple-100
+                           placeholder-purple-200/40 focus:border-gold/60 focus:outline-none
+                           resize-none text-sm leading-relaxed"
                 rows={3}
                 value={textValue}
                 onChange={(e) => setTextValue(e.target.value)}
@@ -117,13 +122,13 @@ export default function Questionnaire({ onComplete }: Props) {
               <div className="flex gap-3">
                 <button
                   onClick={() => handleTextContinue(false)}
-                  className="flex-1 py-3 bg-burgundy text-parchment rounded-lg hover:bg-burgundy/80 transition-colors font-medium text-sm"
+                  className="flex-1 py-3 bg-purple-700 text-purple-100 rounded-lg hover:bg-purple-600 transition-colors font-medium text-sm"
                 >
                   {isLast ? '✨ Reveal My Fate' : 'Continue →'}
                 </button>
                 <button
                   onClick={() => handleTextContinue(true)}
-                  className="px-6 py-3 border border-inkbrown/30 text-inkbrown/60 rounded-lg hover:bg-inkbrown/5 transition-colors text-sm"
+                  className="px-6 py-3 border border-white/20 text-purple-200/50 rounded-lg hover:bg-white/5 transition-colors text-sm"
                 >
                   Skip
                 </button>
@@ -135,7 +140,7 @@ export default function Questionnaire({ onComplete }: Props) {
 
       <div className="mt-auto pt-4">
         {step > 0 && (
-          <button onClick={goBack} className="text-sm text-inkbrown/40 hover:text-inkbrown transition-colors">
+          <button onClick={goBack} className="text-sm text-purple-200/40 hover:text-purple-200 transition-colors">
             ← Back
           </button>
         )}
