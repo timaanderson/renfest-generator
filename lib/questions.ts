@@ -1,4 +1,4 @@
-import type { Archetype, Symbol, Skill, Motivation, Flaw } from './types'
+import type { Archetype, Symbol, Skill, Motivation, Flaw, Vibe } from './types'
 
 export interface ChoiceQuestion<T extends string> {
   id: string
@@ -92,6 +92,20 @@ export const questions: AnyQuestion[] = [
       { value: 'Directions',     label: '🗺️ Terrible Directions', description: 'Lost in familiar forests' },
     ],
   } as ChoiceQuestion<Flaw>,
+  {
+    id: 'vibe',
+    kind: 'choice',
+    prompt: 'How dost thou carry thyself at the faire?',
+    subtext: 'Every soul hath a manner of making merry',
+    options: [
+      { value: 'Noble',    label: '🏅 The True Believer', description: 'In character all day. Honour is not a costume.' },
+      { value: 'Fool',     label: '🃏 The Merry Fool',    description: 'Here for laughs, turkey legs, and general chaos.' },
+      { value: 'Mead',     label: '🍺 The Mead Pilgrim',  description: 'The hall is the destination. The rest is scenery.' },
+      { value: 'Vixen',    label: '🌹 The Enchantress',   description: 'To be seen, admired, and thoroughly remembered.' },
+      { value: 'Showman',  label: '🎪 The Showman',       description: 'Every moment is a performance. All eyes on me.' },
+      { value: 'Wanderer', label: '🗺️ The Lost Pilgrim',  description: 'First time here. No idea what\'s happening. Loving it.' },
+    ],
+  } as ChoiceQuestion<Vibe>,
   {
     id: 'nameHint',
     kind: 'text',

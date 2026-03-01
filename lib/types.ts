@@ -3,6 +3,7 @@ export type Symbol = 'Dragon' | 'Wolf' | 'Mushroom' | 'Moon' | 'Anvil' | 'Lute'
 export type Skill = 'Combat' | 'Storytelling' | 'Brewing' | 'Healing' | 'Bargaining' | 'Baking'
 export type Motivation = 'Glory' | 'Fortune' | 'Love' | 'Curiosity' | 'Prophecy' | 'Hunger'
 export type Flaw = 'Pride' | 'Napping' | 'Squirrels' | 'Overconfidence' | 'Hoarding' | 'Directions'
+export type Vibe = 'Noble' | 'Fool' | 'Mead' | 'Vixen' | 'Showman' | 'Wanderer'
 
 export interface QuestionnaireAnswers {
   archetype: Archetype
@@ -10,8 +11,9 @@ export interface QuestionnaireAnswers {
   skill: Skill
   motivation: Motivation
   flaw: Flaw
-  nameHint?: string   // step 6 — optional preferred name/handle
-  bioHint?: string    // step 7 — optional biography note
+  vibe: Vibe
+  nameHint?: string   // step 7 — optional preferred name/handle
+  bioHint?: string    // step 8 — optional biography note
 }
 
 export interface PersonaStats {

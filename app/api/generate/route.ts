@@ -6,6 +6,16 @@ export async function POST(req: NextRequest) {
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   const answers: QuestionnaireAnswers = await req.json()
 
+  const VIBE_DESCRIPTIONS: Record<string, string> = {
+    Noble:    'serious, deeply in-character, treats the faire as a genuine historical event',
+    Fool:     'goofy, here for laughs and turkey legs, never misses a chance for a joke',
+    Mead:     'there primarily for the mead hall — boisterous, loud, and perpetually thirsty',
+    Vixen:    'provocative and magnetic, dressed to be admired, knows exactly the effect they have',
+    Showman:  'theatrical and dramatic, treats every moment as a performance for an audience',
+    Wanderer: 'wide-eyed first-timer, overwhelmed with delight, has no idea what is going on',
+  }
+
+  const vibeDesc = VIBE_DESCRIPTIONS[answers.vibe] ?? answers.vibe
   const nameHintLine = answers.nameHint
     ? `- Preferred name/handle: "${answers.nameHint}" — work this into the persona name`
     : ''
@@ -21,8 +31,11 @@ Character profile:
 - Greatest skill: ${answers.skill}
 - Quest motivation: ${answers.motivation}
 - Fatal flaw: ${answers.flaw}
+- Personality / vibe: ${vibeDesc}
 ${nameHintLine}
 ${bioHintLine}
+
+The "personality / vibe" line is key — let it shape the tone of the backstory, trivia, and name. A Mead Pilgrim's backstory should smell faintly of ale; a Showman's should have a whiff of theatre.
 
 Respond with ONLY valid JSON, no markdown, in this exact shape:
 {
