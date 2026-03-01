@@ -2,48 +2,43 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 bg-archetype-knight">
-      {/* Decorative top line */}
-      <div className="w-full max-w-md mb-8">
-        <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-      </div>
-
-      <div className="text-center max-w-md space-y-6">
-        <div className="text-6xl mb-2">⚜️</div>
-
-        <div>
-          <h1 className="text-4xl font-bold text-parchment leading-tight">
-            Renaissance Persona<br />Generator
-          </h1>
-          <p className="text-parchment/50 text-sm mt-3 italic">
-            Answer seven questions. Receive thy fate.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          <Link
-            href="/generate"
-            className="block w-full text-center py-4 bg-gold text-inkbrown font-bold text-lg rounded-xl hover:bg-gold/80 transition-colors shadow-glow-knight"
-          >
-            ⚔️ Begin Thy Journey
-          </Link>
-
-          <Link
-            href="/archive"
-            className="block w-full text-center py-3 border border-gold/30 text-parchment/60 text-sm rounded-xl hover:border-gold/60 hover:text-parchment/80 transition-colors"
-          >
-            📚 View Archive
-          </Link>
-        </div>
-
-        <p className="text-parchment/25 text-xs">
-          Powered by ancient scrolls and GPT-4o
+    <div className="text-center space-y-8 py-12">
+      <div>
+        <div className="text-5xl mb-4">⚜️</div>
+        <h1 className="text-4xl font-serif font-bold text-inkbrown mb-3 leading-tight">
+          Renaissance Persona<br />Generator
+        </h1>
+        <p className="text-inkbrown/60 italic max-w-md mx-auto">
+          Answer seven whimsical questions and discover thy true Renaissance Faire identity.
         </p>
       </div>
 
-      <div className="w-full max-w-md mt-8">
-        <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+      <div className="flex flex-col items-center gap-3">
+        <Link
+          href="/generate"
+          className="px-8 py-4 bg-burgundy text-parchment text-lg font-semibold rounded-xl hover:bg-burgundy/80 transition-colors shadow-md"
+        >
+          ✨ Begin Thy Journey
+        </Link>
+        <Link href="/archive" className="text-inkbrown/50 hover:text-inkbrown transition-colors text-sm">
+          📜 View Thy Archive
+        </Link>
       </div>
-    </main>
+
+      <div className="grid grid-cols-3 gap-4 pt-4 text-sm text-inkbrown/60">
+        <div className="p-4 bg-white/40 rounded-lg border border-inkbrown/10">
+          <div className="text-2xl mb-2">🎭</div>
+          <div>Seven questions shape thy destiny</div>
+        </div>
+        <div className="p-4 bg-white/40 rounded-lg border border-inkbrown/10">
+          <div className="text-2xl mb-2">🛡️</div>
+          <div>AI-crafted backstory and heraldic crest</div>
+        </div>
+        <div className="p-4 bg-white/40 rounded-lg border border-inkbrown/10">
+          <div className="text-2xl mb-2">📜</div>
+          <div>Archive and share thy personas</div>
+        </div>
+      </div>
+    </div>
   )
 }
