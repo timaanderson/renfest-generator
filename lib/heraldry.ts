@@ -46,15 +46,33 @@ export const FIELD_PATTERNS: Record<Archetype, { id: string; patternEl: string; 
     </pattern>`,
     fill: 'url(#field-viking)',
   },
-  Herbalist: {
-    id: 'field-herbalist',
-    patternEl: `<pattern id="field-herbalist" patternUnits="userSpaceOnUse" width="20" height="20">
-      <rect width="20" height="20" fill="#3a6b1a"/>
-      <circle cx="10" cy="10" r="4" fill="#2d5514" opacity="0.4"/>
-      <circle cx="0" cy="0" r="2" fill="#2d5514" opacity="0.3"/>
-      <circle cx="20" cy="20" r="2" fill="#2d5514" opacity="0.3"/>
+  Pirate: {
+    id: 'field-pirate',
+    patternEl: `<pattern id="field-pirate" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="20" height="20" fill="#1a2a3a"/>
+      <line x1="0" y1="0" x2="20" y2="20" stroke="#141e28" stroke-width="2" opacity="0.7"/>
+      <line x1="20" y1="0" x2="0" y2="20" stroke="#141e28" stroke-width="2" opacity="0.7"/>
     </pattern>`,
-    fill: 'url(#field-herbalist)',
+    fill: 'url(#field-pirate)',
+  },
+  Fairy: {
+    id: 'field-fairy',
+    patternEl: `<pattern id="field-fairy" patternUnits="userSpaceOnUse" width="24" height="24">
+      <rect width="24" height="24" fill="#1a3d2b"/>
+      <circle cx="6"  cy="6"  r="1.5" fill="#b8f0d4" opacity="0.25"/>
+      <circle cx="18" cy="18" r="1"   fill="#b8f0d4" opacity="0.2"/>
+      <circle cx="18" cy="6"  r="1"   fill="#b8f0d4" opacity="0.15"/>
+      <circle cx="6"  cy="18" r="1.5" fill="#b8f0d4" opacity="0.2"/>
+    </pattern>`,
+    fill: 'url(#field-fairy)',
+  },
+  Royal: {
+    id: 'field-royal',
+    patternEl: `<pattern id="field-royal" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+      <rect width="20" height="20" fill="#3d0d5e"/>
+      <rect width="10" height="20" fill="#2e0a47" opacity="0.6"/>
+    </pattern>`,
+    fill: 'url(#field-royal)',
   },
 }
 
@@ -107,10 +125,20 @@ export const MANTLING: Record<Archetype, {
     glow: 'rgba(45,90,39,0.7)',
     bgGradient: 'radial-gradient(ellipse at top, #122214 0%, #080f09 55%, #030503 100%)',
   },
-  Herbalist: {
-    primary: '#3a6b1a', secondary: '#f4e4bc',
-    glow: 'rgba(58,107,26,0.7)',
-    bgGradient: 'radial-gradient(ellipse at top, #1a2f0d 0%, #0d1808 55%, #050a03 100%)',
+  Pirate: {
+    primary: '#1a2a3a', secondary: '#c9a84c',
+    glow: 'rgba(26,42,58,0.8)',
+    bgGradient: 'radial-gradient(ellipse at top, #0d1a24 0%, #080e14 55%, #030608 100%)',
+  },
+  Fairy: {
+    primary: '#1a3d2b', secondary: '#b8f0d4',
+    glow: 'rgba(26,61,43,0.7)',
+    bgGradient: 'radial-gradient(ellipse at top, #0d2416 0%, #081410 55%, #030805 100%)',
+  },
+  Royal: {
+    primary: '#3d0d5e', secondary: '#c9a84c',
+    glow: 'rgba(61,13,94,0.7)',
+    bgGradient: 'radial-gradient(ellipse at top, #2a1040 0%, #160828 55%, #0a0515 100%)',
   },
 }
 
@@ -206,22 +234,66 @@ export const SILHOUETTES: Record<Archetype, string[]> = {
     // right leg
     'M54,96 L84,96 L86,152 L56,152 Z',
   ],
-  Herbalist: [
-    // wide straw hat brim
-    'M8,32 L92,32 L88,38 L12,38 Z',
-    // hat crown (rounded)
-    'M30,12 L70,12 C74,12 76,20 76,32 L24,32 C24,20 26,12 30,12 Z',
+  Pirate: [
+    // tricorn hat brim
+    'M14,28 L86,28 L82,34 L18,34 Z',
+    // hat peak center
+    'M42,8 L58,8 L62,28 L38,28 Z',
+    // hat peak left
+    'M24,10 L42,8 L38,28 L18,28 Z',
+    // hat peak right
+    'M58,8 L76,10 L82,28 L62,28 Z',
     // head
-    'M38,40 C38,52 44,60 50,60 C56,60 62,52 62,40 C62,28 56,22 50,22 C44,22 38,28 38,40 Z',
-    // apron/body
-    'M26,60 L74,60 L72,118 L28,118 Z',
-    // apron front panel
-    'M38,60 L62,60 L62,118 L38,118 Z',
+    'M38,36 C38,48 44,56 50,56 C56,56 62,48 62,36 C62,24 56,18 50,18 C44,18 38,24 38,36 Z',
+    // coat body
+    'M18,56 L82,56 L80,110 L20,110 Z',
     // left leg
-    'M28,118 L50,118 L50,152 L26,152 Z',
+    'M20,110 L48,110 L46,152 L18,152 Z',
     // right leg
-    'M50,118 L72,118 L74,152 L50,152 Z',
-    // herb bundle (right hand)
-    'M76,62 L86,50 L90,52 L86,60 L92,56 L92,64 L84,72 L76,74 Z',
+    'M52,110 L80,110 L82,152 L52,152 Z',
+    // cutlass blade
+    'M82,58 L96,52 L98,62 L84,72 Z',
+    // cutlass handle
+    'M80,72 L84,72 L84,100 L80,100 Z',
+  ],
+  Fairy: [
+    // left wing top
+    'M22,32 C8,20 6,52 18,62 C24,67 32,62 36,56 L28,48 Z',
+    // left wing bottom
+    'M14,64 C4,76 10,94 24,90 C30,88 34,80 30,70 L20,68 Z',
+    // right wing top
+    'M78,32 C92,20 94,52 82,62 C76,67 68,62 64,56 L72,48 Z',
+    // right wing bottom
+    'M86,64 C96,76 90,94 76,90 C70,88 66,80 70,70 L80,68 Z',
+    // head
+    'M38,32 C38,44 44,52 50,52 C56,52 62,44 62,32 C62,20 56,14 50,14 C44,14 38,20 38,32 Z',
+    // dress body
+    'M36,52 L64,52 L68,104 L32,104 Z',
+    // left leg
+    'M32,104 L50,104 L50,134 L30,134 Z',
+    // right leg
+    'M50,104 L68,104 L70,134 L50,134 Z',
+    // flower crown
+    'M40,12 L44,4 L50,8 L56,4 L60,12 L50,14 Z',
+  ],
+  Royal: [
+    // crown – 5 pointed tines
+    'M34,30 L36,14 L42,24 L46,10 L50,20 L54,10 L58,24 L64,14 L66,30 Z',
+    // crown band
+    'M30,30 L70,30 L68,38 L32,38 Z',
+    // head
+    'M38,40 C38,52 44,60 50,60 C56,60 62,52 62,40 C62,30 56,26 50,26 C44,26 38,30 38,40 Z',
+    // grand flowing robe body
+    'M12,60 L88,60 L84,118 L16,118 Z',
+    // ermine hem trim
+    'M16,118 L84,118 L88,134 L12,134 Z',
+    // left robe hem
+    'M12,134 L46,134 L44,152 L10,152 Z',
+    // right robe hem
+    'M54,134 L88,134 L90,152 L56,152 Z',
+    // scepter staff
+    'M78,26 L82,26 L82,112 L78,112 Z',
+    // scepter orb
+    'M80,22 C76,22 72,18 72,14 C72,10 76,6 80,6 C84,6 88,10 88,14 C88,18 84,22 80,22 Z',
   ],
 }

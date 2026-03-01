@@ -2,26 +2,28 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import PersonaProfile from '@/components/PersonaProfile'
+import OraclesChamber from '@/components/OraclesChamber'
+import ThemeFrame, { type ThemeFrameTheme } from '@/components/ThemeFrame'
 import { generatePersona, buildCrest } from '@/lib/generate'
-import { MANTLING } from '@/lib/heraldry'
 import type { Persona, QuestionnaireAnswers } from '@/lib/types'
 
 export default function PersonaPage() {
   const router = useRouter()
   const [persona, setPersona] = useState<Persona | null>(null)
+  const [answers, setAnswers] = useState<QuestionnaireAnswers | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  async function generate(answers: QuestionnaireAnswers) {
+  async function generate(ans: QuestionnaireAnswers) {
     setLoading(true)
     setError('')
     try {
-      const result = await generatePersona(answers)
-      const crest = buildCrest(answers)
+      const result = await generatePersona(ans)
+      const crest = buildCrest(ans)
       setPersona({
         id: crypto.randomUUID(),
         createdAt: new Date().toISOString(),
-        answers,
+        answers: ans,
         crest,
         name: result.name,
         title: result.title,
@@ -39,36 +41,40 @@ export default function PersonaPage() {
   useEffect(() => {
     const raw = sessionStorage.getItem('renfest_answers')
     if (!raw) { router.push('/generate'); return }
-    generate(JSON.parse(raw))
+    const parsed = JSON.parse(raw) as QuestionnaireAnswers
+    setAnswers(parsed)
+    generate(parsed)
   }, [])
 
-  const archetype = persona?.answers.archetype.toLowerCase() ?? 'knight'
+  if (loading && answers) {
+    return <OraclesChamber answers={answers} />
+  }
 
   if (loading) {
     return (
-      <div
-        className={`min-h-screen flex flex-col items-center justify-center gap-6 bg-archetype-${archetype}`}
-      >
+      <div className="flex flex-col items-center justify-center py-20 gap-4">
         <div className="text-6xl animate-pulse">🔮</div>
-        <p className="text-xl text-parchment">The oracle divines thy persona...</p>
-        <p className="text-parchment/40 text-sm">Consulting ancient scrolls</p>
+        <p className="text-xl text-purple-200">The oracle divines thy persona...</p>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <p className="text-red-400">{error}</p>
-        <a href="/generate" className="text-gold hover:underline">← Try again</a>
+      <div className="flex flex-col items-center justify-center py-20 gap-4">
+        <p className="text-red-400 font-bold">{error}</p>
+        <a href="/generate" className="text-purple-400 hover:underline">← Try again</a>
       </div>
     )
   }
 
   if (!persona) return null
 
+  const archetype = persona.answers.archetype.toLowerCase()
+
   return (
-    <div className={`min-h-screen bg-archetype-${archetype} py-8 px-4`}>
+    <div className={`-mx-6 -mt-8 px-6 pt-8 pb-8 bg-archetype-${archetype}`}>
+      <ThemeFrame theme={archetype as ThemeFrameTheme} />
       <div className="max-w-lg mx-auto">
         <PersonaProfile
           persona={persona}
