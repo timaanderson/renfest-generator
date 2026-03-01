@@ -27,6 +27,7 @@ body::after {
 .bg-archetype-rogue     { background: radial-gradient(ellipse at 50% 0%, #111111 0%, #0a0a0a 50%, #050505 100%); }
 .bg-archetype-viking    { background: radial-gradient(ellipse at 50% 0%, #122214 0%, #080f09 50%, #030503 100%); }
 .bg-archetype-herbalist { background: radial-gradient(ellipse at 50% 0%, #1a2f0d 0%, #0d1808 50%, #050a03 100%); }
+.bg-archetype-royal     { background: radial-gradient(ellipse at 50% 0%, #2a1040 0%, #160828 50%, #0a0515 100%); }
 
 /* ── Carved border treatment ─────────────────────────────────────────────── */
 .carved-border {

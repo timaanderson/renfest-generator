@@ -21,30 +21,30 @@ const ROPE_OFF = 'clamp(20px, 3vw, 50px)'
 /* ─── Royal ──────────────────────────────────────────── */
 function RoyalElements() {
   return <>
-    <div data-frame="valance"
-      style={{ position:'absolute', top:0, left:0, right:0, height:'clamp(60px,12vh,140px)' }}>
-      <Image src="/borders/royal_valance.png" alt="" fill style={{ objectFit:'cover' }} />
+    <div data-frame="curtain-left"
+      style={{ position:'absolute', top:0,
+               left:'calc(-1 * clamp(60px, 10vw, 120px))',
+               height:'110vh' }}>
+      <Image src="/themes/royal/curtain_left.png" alt=""
+        width={743} height={1024}
+        style={{ height:'110vh', width:'auto', display:'block' }} />
     </div>
-    <div data-frame="left"
-      style={{ position:'absolute', left:0, top:0, width:WIDE_W, height:FULL_H }}>
-      <Image src="/borders/royal_left.png" alt="" fill
-        style={{ objectFit:'contain', objectPosition:'top left' }} />
-    </div>
-    <div data-frame="right"
-      style={{ position:'absolute', right:0, top:0, width:WIDE_W, height:FULL_H }}>
-      <Image src="/borders/royal_right.png" alt="" fill
-        style={{ objectFit:'contain', objectPosition:'top right' }} />
+    <div data-frame="curtain-right"
+      style={{ position:'absolute', top:0,
+               right:'calc(-1 * clamp(60px, 10vw, 120px))',
+               height:'110vh' }}>
+      <Image src="/themes/royal/curtain_right.png" alt=""
+        width={743} height={1024}
+        style={{ height:'110vh', width:'auto', display:'block' }} />
     </div>
   </>
 }
 function animateRoyal(tl: gsap.core.Timeline, el: HTMLElement, dur: number) {
-  const v = el.querySelector<HTMLElement>('[data-frame="valance"]')
-  const l = el.querySelector<HTMLElement>('[data-frame="left"]')
-  const r = el.querySelector<HTMLElement>('[data-frame="right"]')
-  gsap.set([v, l, r], { y: '-110%' })
-  tl.to(v, { y:0, duration:dur*0.6, ease:'back.out(1.3)' })
-    .to(l, { y:0, duration:dur*0.9, ease:'back.out(1.1)' }, `-=${dur*0.3}`)
-    .to(r, { y:0, duration:dur*0.9, ease:'back.out(1.1)' }, `-=${dur*0.85}`)
+  const l = el.querySelector<HTMLElement>('[data-frame="curtain-left"]')
+  const r = el.querySelector<HTMLElement>('[data-frame="curtain-right"]')
+  gsap.set([l, r], { scaleY: 0, transformOrigin: '50% 0%' })
+  tl.to(l, { scaleY:1, duration:dur, ease:'back.out(1.3)' })
+    .to(r, { scaleY:1, duration:dur, ease:'back.out(1.3)' }, `-=${dur * 0.91}`)
 }
 
 /* ─── Viking ──────────────────────────────────────────── */

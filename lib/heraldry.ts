@@ -56,6 +56,14 @@ export const FIELD_PATTERNS: Record<Archetype, { id: string; patternEl: string; 
     </pattern>`,
     fill: 'url(#field-herbalist)',
   },
+  Royal: {
+    id: 'field-royal',
+    patternEl: `<pattern id="field-royal" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+      <rect width="20" height="20" fill="#3d0d5e"/>
+      <rect width="10" height="20" fill="#2e0a47" opacity="0.6"/>
+    </pattern>`,
+    fill: 'url(#field-royal)',
+  },
 }
 
 // ── Heraldic charge paths (Layer 1) ──────────────────────────────────────────
@@ -111,6 +119,11 @@ export const MANTLING: Record<Archetype, {
     primary: '#3a6b1a', secondary: '#f4e4bc',
     glow: 'rgba(58,107,26,0.7)',
     bgGradient: 'radial-gradient(ellipse at top, #1a2f0d 0%, #0d1808 55%, #050a03 100%)',
+  },
+  Royal: {
+    primary: '#3d0d5e', secondary: '#c9a84c',
+    glow: 'rgba(61,13,94,0.7)',
+    bgGradient: 'radial-gradient(ellipse at top, #2a1040 0%, #160828 55%, #0a0515 100%)',
   },
 }
 
@@ -223,5 +236,25 @@ export const SILHOUETTES: Record<Archetype, string[]> = {
     'M50,118 L72,118 L74,152 L50,152 Z',
     // herb bundle (right hand)
     'M76,62 L86,50 L90,52 L86,60 L92,56 L92,64 L84,72 L76,74 Z',
+  ],
+  Royal: [
+    // crown – 5 pointed tines
+    'M34,30 L36,14 L42,24 L46,10 L50,20 L54,10 L58,24 L64,14 L66,30 Z',
+    // crown band
+    'M30,30 L70,30 L68,38 L32,38 Z',
+    // head
+    'M38,40 C38,52 44,60 50,60 C56,60 62,52 62,40 C62,30 56,26 50,26 C44,26 38,30 38,40 Z',
+    // grand flowing robe body
+    'M12,60 L88,60 L84,118 L16,118 Z',
+    // ermine hem trim
+    'M16,118 L84,118 L88,134 L12,134 Z',
+    // left robe hem
+    'M12,134 L46,134 L44,152 L10,152 Z',
+    // right robe hem
+    'M54,134 L88,134 L90,152 L56,152 Z',
+    // scepter staff
+    'M78,26 L82,26 L82,112 L78,112 Z',
+    // scepter orb
+    'M80,22 C76,22 72,18 72,14 C72,10 76,6 80,6 C84,6 88,10 88,14 C88,18 84,22 80,22 Z',
   ],
 }

@@ -32,6 +32,7 @@ export const questions: AnyQuestion[] = [
       { value: 'Rogue',     label: '🗡️ Rogue',     description: 'A shadow of cunning and coin' },
       { value: 'Viking',    label: '🪓 Viking',    description: 'A bold explorer of distant shores' },
       { value: 'Herbalist', label: '🌿 Herbalist', description: 'A keeper of forest remedies' },
+      { value: 'Royal',     label: '👑 Royal',     description: 'A noble of court and crown' },
     ],
   } as ChoiceQuestion<Archetype>,
   {
