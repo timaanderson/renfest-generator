@@ -50,8 +50,8 @@ function animateRoyal(tl: gsap.core.Timeline, el: HTMLElement, dur: number) {
 // 55% content height · center of sword on content edge · vertically centered
 function KnightElements() {
   const wrap: React.CSSProperties = {
-    width: 'clamp(50px, 7vw, 110px)',
-    height: 'clamp(250px, 55vh, 480px)',
+    width: 'clamp(60px, 8vw, 130px)',
+    height: 'clamp(400px, 78vh, 720px)',
     overflow: 'visible',
   }
   return <>
@@ -357,16 +357,16 @@ function RogueElements() {
           style={{ objectFit:'contain' }} />
       </div>
     </div>
-    {/* Bow & quiver — right · 15% onto content · bottom-anchored */}
+    {/* Bow & quiver — bottom-left · 15% onto content · mirrored to face inward */}
     <div style={{
-      position:'absolute', left:CR, bottom:0,
-      transform:'translateX(-15%)',
+      position:'absolute', left:CL, bottom:0,
+      transform:'translateX(-85%)',
       width:'clamp(80px, 11vw, 165px)', height:'clamp(200px, 50vh, 430px)',
       overflow:'visible',
     }}>
       <div data-frame="bow" style={{ position:'absolute', inset:0, opacity:0 }}>
         <Image src="/borders/rogue_right.png" alt="" fill
-          style={{ objectFit:'contain', objectPosition:'bottom center' }} />
+          style={{ objectFit:'contain', objectPosition:'bottom center', transform:'scaleX(-1)' }} />
       </div>
     </div>
   </>

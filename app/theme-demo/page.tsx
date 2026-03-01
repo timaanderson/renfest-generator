@@ -10,6 +10,8 @@ const THEMES: { id: ThemeFrameTheme; label: string; bg: string }[] = [
   { id: 'fairy',  label: '🧚 Fairy',  bg: 'bg-emerald-950' },
   { id: 'royal',  label: '👑 Royal',  bg: 'bg-purple-950'  },
   { id: 'bard',   label: '🎵 Bard',   bg: 'bg-amber-950'   },
+  { id: 'rogue',  label: '🗡️ Rogue',  bg: 'bg-red-950'     },
+  { id: 'wizard', label: '🧙 Wizard', bg: 'bg-blue-950'    },
 ]
 
 export default function ThemeDemoPage() {
